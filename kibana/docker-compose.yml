@@ -1,8 +1,19 @@
 version: '7.17'
 services:
+
+  json_processor:
+    image: python:3.9-slim
+    container_name: json_processor
+    volumes:
+      - ./process_json.py:/app/process_json.py
+      - ./input.json:/app/input.json
+      - ./output_files:/app/output_files
+    working_dir: /app
+    command: ["python", "process_json.py"]
+
   elasticsearch:
     image: elasticsearch:7.17.19
-    container_name: elasticsearch
+    container_name: elasticsearch-kibana
     environment:
       - node.name=elasticsearch
       - discovery.type=single-node
@@ -17,6 +28,8 @@ services:
       - esdata:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+    depends_on:
+      - json_processor
 
   kibana:
     image: kibana:7.17.19
@@ -27,17 +40,19 @@ services:
       - 5601:5601
     depends_on:
       - elasticsearch
+      - json_processor
 
   logstash:
-    image: logstash:7.17.19
-    container_name: logstash
+    image: logstash:8.12.2
+    container_name: logstash-kibana
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-      - ./logs:/usr/share/logstash/logs
+      - ./output_files:/usr/share/logstash/output_files
     ports:
-      - 8090:5000
+      - 5044:5044
     depends_on:
       - elasticsearch
+      - json_processor
 
   setup:
     image: alpine:3.19.1
@@ -47,7 +62,6 @@ services:
     volumes:
       - ./setup.sh:/setup.sh
     entrypoint: /bin/sh /setup.sh
-
 
 volumes:
   esdata:

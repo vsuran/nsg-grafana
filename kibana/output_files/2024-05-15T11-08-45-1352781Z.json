@@ -1,0 +1,37 @@
+{
+  "time": "2024-05-15T11:08:45.1352781Z",
+  "systemId": "621b9685-9c9d-4007-8c5d-96f610d32f2d",
+  "macAddress": "000D3A47CD0E",
+  "category": "NetworkSecurityGroupFlowEvent",
+  "resourceId": "/SUBSCRIPTIONS/053D4790-1071-4F2F-9C3C-98FEC3E5EB41/RESOURCEGROUPS/VAULT-EDUCATION/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/LINUX-NSG",
+  "operationName": "NetworkSecurityGroupFlowEvents",
+  "properties": {
+    "Version": 2,
+    "flows": [
+      {
+        "rule": "DefaultRule_AllowInternetOutBound",
+        "flows": [
+          {
+            "mac": "000D3A47CD0E",
+            "flowTuples": [
+              "1715771303,10.0.0.4,185.125.188.59,47542,443,T,O,A,E,0,0,0,0"
+            ]
+          }
+        ]
+      },
+      {
+        "rule": "DefaultRule_DenyAllInBound",
+        "flows": [
+          {
+            "mac": "000D3A47CD0E",
+            "flowTuples": [
+              "1715771265,194.180.49.72,10.0.0.4,52303,29937,T,I,D,B,,,,",
+              "1715771281,125.83.174.187,10.0.0.4,54273,23,T,I,D,B,,,,",
+              "1715771308,104.195.12.40,10.0.0.4,17085,4000,U,I,D,B,,,,"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

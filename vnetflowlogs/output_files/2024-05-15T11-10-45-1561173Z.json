@@ -1,0 +1,43 @@
+{
+  "time": "2024-05-15T11:10:45.1561173Z",
+  "flowLogVersion": 4,
+  "flowLogGUID": "13ba1076-c677-4f2a-8c40-49c58013f309",
+  "macAddress": "000D3A47CD0E",
+  "category": "FlowLogFlowEvent",
+  "flowLogResourceID": "/SUBSCRIPTIONS/053D4790-1071-4F2F-9C3C-98FEC3E5EB41/RESOURCEGROUPS/NETWORKWATCHERRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKWATCHERS/NETWORKWATCHER_WESTEUROPE/FLOWLOGS/MYVNETFLOWLOG",
+  "targetResourceID": "/subscriptions/053d4790-1071-4f2f-9c3c-98fec3e5eb41/resourceGroups/vault-education/providers/Microsoft.Network/virtualNetworks/test-vnet",
+  "operationName": "FlowLogFlowEvent",
+  "flowRecords": {
+    "flows": [
+      {
+        "aclID": "/subscriptions/053d4790-1071-4f2f-9c3c-98fec3e5eb41/resourceGroups/vault-education/providers/Microsoft.Network/networkSecurityGroups/linux-nsg",
+        "flowGroups": [
+          {
+            "rule": "DefaultRule_AllowInternetOutBound",
+            "flowTuples": [
+              "1715771391430,10.0.0.4,185.125.190.26,60332,443,6,O,E,NX,142,10595,3122,4756963"
+            ]
+          }
+        ]
+      },
+      {
+        "aclID": "/subscriptions/053d4790-1071-4f2f-9c3c-98fec3e5eb41/resourceGroups/vault-education/providers/Microsoft.Network/networkSecurityGroups/linux-nsg",
+        "flowGroups": [
+          {
+            "rule": "DefaultRule_DenyAllInBound",
+            "flowTuples": [
+              "1715771388447,60.160.170.153,10.0.0.4,40600,23,6,I,D,NX,0,0,0,0",
+              "1715771388773,162.243.145.50,10.0.0.4,37705,8118,6,I,D,NX,0,0,0,0",
+              "1715771389445,60.160.170.153,10.0.0.4,40600,23,6,I,D,NX,0,0,0,0",
+              "1715771395460,178.176.47.124,10.0.0.4,39483,23,6,I,D,NX,0,0,0,0",
+              "1715771399940,45.142.182.70,10.0.0.4,34034,8080,6,I,D,NX,0,0,0,0",
+              "1715771431997,80.75.212.75,10.0.0.4,48944,3025,6,I,D,NX,0,0,0,0",
+              "1715771437485,152.89.198.88,10.0.0.4,57122,2708,6,I,D,NX,0,0,0,0",
+              "1715771437660,103.45.246.42,10.0.0.4,44461,2080,6,I,D,NX,0,0,0,0"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

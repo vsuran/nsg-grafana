@@ -1,0 +1,51 @@
+{
+  "time": "2024-05-15T11:09:45.1497410Z",
+  "flowLogVersion": 4,
+  "flowLogGUID": "13ba1076-c677-4f2a-8c40-49c58013f309",
+  "macAddress": "000D3A47CD0E",
+  "category": "FlowLogFlowEvent",
+  "flowLogResourceID": "/SUBSCRIPTIONS/053D4790-1071-4F2F-9C3C-98FEC3E5EB41/RESOURCEGROUPS/NETWORKWATCHERRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKWATCHERS/NETWORKWATCHER_WESTEUROPE/FLOWLOGS/MYVNETFLOWLOG",
+  "targetResourceID": "/subscriptions/053d4790-1071-4f2f-9c3c-98fec3e5eb41/resourceGroups/vault-education/providers/Microsoft.Network/virtualNetworks/test-vnet",
+  "operationName": "FlowLogFlowEvent",
+  "flowRecords": {
+    "flows": [
+      {
+        "aclID": "/subscriptions/053d4790-1071-4f2f-9c3c-98fec3e5eb41/resourceGroups/vault-education/providers/Microsoft.Network/networkSecurityGroups/linux-nsg",
+        "flowGroups": [
+          {
+            "rule": "DefaultRule_AllowInternetOutBound",
+            "flowTuples": [
+              "1715771335366,10.0.0.4,185.125.188.59,53998,443,6,O,B,NX,0,0,0,0",
+              "1715771335698,10.0.0.4,185.125.188.58,56294,443,6,O,B,NX,0,0,0,0",
+              "1715771335793,10.0.0.4,185.125.190.26,60332,443,6,O,B,NX,0,0,0,0",
+              "1715771346325,10.0.0.4,185.125.188.58,56294,443,6,O,E,NX,13,2475,11,6120",
+              "1715771350691,10.0.0.4,185.125.188.59,53998,443,6,O,E,NX,25,17078,38,32011"
+            ]
+          }
+        ]
+      },
+      {
+        "aclID": "/subscriptions/053d4790-1071-4f2f-9c3c-98fec3e5eb41/resourceGroups/vault-education/providers/Microsoft.Network/networkSecurityGroups/linux-nsg",
+        "flowGroups": [
+          {
+            "rule": "UserRule_SSH",
+            "flowTuples": [
+              "1715771344467,85.209.11.254,10.0.0.4,51934,22,6,I,B,NX,0,0,0,0",
+              "1715771355536,85.209.11.254,10.0.0.4,51934,22,6,I,E,NX,14,2879,10,2330"
+            ]
+          },
+          {
+            "rule": "DefaultRule_DenyAllInBound",
+            "flowTuples": [
+              "1715771331899,194.180.49.68,10.0.0.4,54390,30808,6,I,D,NX,0,0,0,0",
+              "1715771335287,47.98.141.252,10.0.0.4,50670,6379,6,I,D,NX,0,0,0,0",
+              "1715771343324,87.121.69.52,10.0.0.4,35470,999,6,I,D,NX,0,0,0,0",
+              "1715771378194,91.191.209.198,10.0.0.4,45607,3389,6,I,D,NX,0,0,0,0",
+              "1715771380509,91.92.240.205,10.0.0.4,47605,4665,6,I,D,NX,0,0,0,0"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

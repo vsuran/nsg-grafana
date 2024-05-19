@@ -1,0 +1,52 @@
+{
+  "time": "2024-05-15T11:04:45.1530321Z",
+  "flowLogVersion": 4,
+  "flowLogGUID": "13ba1076-c677-4f2a-8c40-49c58013f309",
+  "macAddress": "000D3A47CD0E",
+  "category": "FlowLogFlowEvent",
+  "flowLogResourceID": "/SUBSCRIPTIONS/053D4790-1071-4F2F-9C3C-98FEC3E5EB41/RESOURCEGROUPS/NETWORKWATCHERRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKWATCHERS/NETWORKWATCHER_WESTEUROPE/FLOWLOGS/MYVNETFLOWLOG",
+  "targetResourceID": "/subscriptions/053d4790-1071-4f2f-9c3c-98fec3e5eb41/resourceGroups/vault-education/providers/Microsoft.Network/virtualNetworks/test-vnet",
+  "operationName": "FlowLogFlowEvent",
+  "flowRecords": {
+    "flows": [
+      {
+        "aclID": "/subscriptions/053d4790-1071-4f2f-9c3c-98fec3e5eb41/resourceGroups/vault-education/providers/Microsoft.Network/networkSecurityGroups/linux-nsg",
+        "flowGroups": [
+          {
+            "rule": "DefaultRule_AllowInternetOutBound",
+            "flowTuples": [
+              "1715771034431,10.0.0.4,185.125.188.59,47542,443,6,O,B,NX,0,0,0,0",
+              "1715771034481,10.0.0.4,185.125.188.54,39032,443,6,O,B,NX,0,0,0,0",
+              "1715771034502,10.0.0.4,20.209.231.161,51008,443,6,O,B,NX,0,0,0,0",
+              "1715771034502,10.0.0.4,20.209.231.161,51008,443,6,O,E,NX,2,264,1,136",
+              "1715771034502,10.0.0.4,20.209.231.161,51008,443,6,O,B,NX,0,0,0,0",
+              "1715771035149,10.0.0.4,20.209.108.97,42352,443,6,O,B,NX,0,0,0,0",
+              "1715771035162,10.0.0.4,20.209.108.97,42352,443,6,O,E,NX,3,909,2,363",
+              "1715771035162,10.0.0.4,20.209.108.97,42352,443,6,O,B,NX,0,0,0,0",
+              "1715771035190,10.0.0.4,20.209.77.129,42184,443,6,O,B,NX,0,0,0,0",
+              "1715771035190,10.0.0.4,20.209.77.129,42184,443,6,O,E,NX,2,264,1,136",
+              "1715771035190,10.0.0.4,20.209.77.129,42184,443,6,O,B,NX,0,0,0,0",
+              "1715771040114,10.0.0.4,20.209.231.161,51008,443,6,O,E,NX,10,2749,17,16580",
+              "1715771040669,10.0.0.4,20.209.108.97,42352,443,6,O,E,NX,10,2659,16,15453",
+              "1715771040781,10.0.0.4,20.209.77.129,42184,443,6,O,E,NX,14,3171,85,115239",
+              "1715771045094,10.0.0.4,185.125.188.54,39032,443,6,O,E,NX,24,2448,202,297853"
+            ]
+          }
+        ]
+      },
+      {
+        "aclID": "/subscriptions/053d4790-1071-4f2f-9c3c-98fec3e5eb41/resourceGroups/vault-education/providers/Microsoft.Network/networkSecurityGroups/linux-nsg",
+        "flowGroups": [
+          {
+            "rule": "DefaultRule_DenyAllInBound",
+            "flowTuples": [
+              "1715771031990,94.156.71.201,10.0.0.4,52166,22975,6,I,D,NX,0,0,0,0",
+              "1715771055828,18.221.232.160,10.0.0.4,50903,809,6,I,D,NX,0,0,0,0",
+              "1715771080134,52.15.111.240,10.0.0.4,55188,50004,6,I,D,NX,0,0,0,0"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
