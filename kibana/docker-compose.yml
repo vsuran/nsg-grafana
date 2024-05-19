@@ -1,0 +1,55 @@
+version: '7.17'
+services:
+  elasticsearch:
+    image: elasticsearch:7.17.19
+    container_name: elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - discovery.type=single-node
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+
+  kibana:
+    image: kibana:7.17.19
+    container_name: kibana
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+
+  logstash:
+    image: logstash:7.17.19
+    container_name: logstash
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./logs:/usr/share/logstash/logs
+    ports:
+      - 8090:5000
+    depends_on:
+      - elasticsearch
+
+  setup:
+    image: alpine:3.19.1
+    container_name: setup_kibana
+    depends_on:
+      - kibana
+    volumes:
+      - ./setup.sh:/setup.sh
+    entrypoint: /bin/sh /setup.sh
+
+
+volumes:
+  esdata:
+    driver: local
+
