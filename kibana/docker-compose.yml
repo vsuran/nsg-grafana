@@ -3,7 +3,7 @@ services:
 
   json_processor:
     image: python:3.9-slim
-    container_name: json_processor
+    container_name: json_processor-kibana
     volumes:
       - ./process_json.py:/app/process_json.py
       - ./input.json:/app/input.json
