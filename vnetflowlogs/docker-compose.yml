@@ -28,7 +28,7 @@ services:
       - 5044:5044
     depends_on:
       - elasticsearch
-      # - json_processor
+      - json_processor
 
   grafana:
     image: grafana/grafana:10.4.2
@@ -38,22 +38,29 @@ services:
     depends_on:
       - elasticsearch
       - logstash
-      # - json_processor
+      - json_processor
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
 
-  # json_processor:
-  #   image: python:3.9-slim
-  #   container_name: json_processor
-  #   volumes:
-  #     - ./process_json.py:/app/process_json.py
-  #     - ./input.json:/app/input.json
-  #     - ./output_files:/app/output_files
-  #   working_dir: /app
-  #   command: ["python", "process_json.py"]
-  #   depends_on:
-  #     - elasticsearch
-
+  json_processor:
+    image: python:3.9-slim
+    container_name: json_processor
+    volumes:
+      - ./process_json.py:/app/process_json.py
+      - ./input.json:/app/input.json
+      - ./output_files:/app/output_files
+    working_dir: /app
+    command: ["python", "process_json.py"]
+    depends_on:
+      - elasticsearch
+  setup:
+    image: alpine:3.19.1
+    container_name: setup_kibana
+    depends_on:
+      - kibana
+    volumes:
+      - ./setup.sh:/setup.sh
+    entrypoint: /bin/sh /setup.sh
 volumes:
   esdata:
     driver: local
