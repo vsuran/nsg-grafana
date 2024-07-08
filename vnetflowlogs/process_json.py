@@ -20,8 +20,13 @@ def process_json_file(input_file, output_dir):
     data = read_json_file(input_file)
     write_json_files(data['records'], output_dir)
 
-# Example usage
-input_file = 'input.json'
+def process_all_json_files(logs_dir, output_dir):
+    for file_name in os.listdir(logs_dir):
+        if file_name.endswith('.json'):
+            input_file = os.path.join(logs_dir, file_name)
+            process_json_file(input_file, output_dir)
+
+logs_dir = 'logs'
 output_dir = 'output_files'
 
-process_json_file(input_file, output_dir)
+process_all_json_files(logs_dir, output_dir)

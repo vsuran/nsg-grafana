@@ -9,24 +9,24 @@ until $(curl --output /dev/null --silent --head --fail http://elasticsearch:9200
     sleep 5
 done
 
-# Get the ID of the existing index pattern named "nsg-flow-logs-*"
-INDEX_PATTERN_ID=$(curl -s -X GET "http://elasticsearch:9200/.kibana/_search?q=index-pattern.title:nsg-flow-logs-*" \
-  -H 'Content-Type: application/json' | jq -r '.hits.hits[0]?._id')
+# Get the ID of the existing index pattern named "vnet-flow-logs"
+response=$(curl -o /dev/null -s -w "%{http_code}" -I "http://localhost:9200/vnet-flow-logs")
 
-# Delete the existing index pattern if it exists
-if [ ! -z "$INDEX_PATTERN_ID" ]; then
-  curl -X DELETE "http://elasticsearch:9200/.kibana/_doc/$INDEX_PATTERN_ID" \
-    -H 'Content-Type: application/json'
-  echo "Deleted old index pattern: nsg-flow-logs-*"
+# If the response is 200, the index exists
+if [ "$response" -eq 200 ]; then
+  echo "Index exists. Deleting now..."
+  curl -X DELETE "http://localhost:9200/vnet-flow-logs"
+else
+  echo "Index does not exist."
 fi
 
 # Create a new index pattern
-curl -X POST "http://elasticsearch:9200/.kibana/_doc/index-pattern:nsg-flow-logs-*" \
+curl -X POST "http://elasticsearch:9200/.kibana/_doc/index-pattern:vnet-flow-logs" \
   -H 'Content-Type: application/json' \
   -d '{
         "type": "index-pattern",
         "index-pattern": {
-          "title": "nsg-flow-logs-*",
+          "title": "vnet-flow-logs",
           "timeFieldName": "time"
         }
       }'

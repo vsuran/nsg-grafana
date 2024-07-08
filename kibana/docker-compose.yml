@@ -6,7 +6,7 @@ services:
     container_name: json_processor-kibana
     volumes:
       - ./process_json.py:/app/process_json.py
-      - ./logs/:/app/logs
+      - ./logs/:/app/
       - ./output_files:/app/output_files
     working_dir: /app
     command: ["python", "process_json.py"]
